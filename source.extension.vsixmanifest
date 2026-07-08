@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ExcludeFromNamespace.870d6a25-cf09-4c6e-aae0-cb5e345ee850" Version="1.0" Language="en-US" Publisher="ExcludeFromNamespace" />
+    <Identity Id="ExcludeFromNamespace.870d6a25-cf09-4c6e-aae0-cb5e345ee850" Version="1.0" Language="en-US" Publisher="sonesoul" />
     <DisplayName>ExcludeFromNamespace</DisplayName>
-    <Description>Empty VSIX Project.</Description>
+    <Description>Exclude a certain directory from automatically generated namespace when adding C# files.</Description>
+    <Preview>true</Preview>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, )">

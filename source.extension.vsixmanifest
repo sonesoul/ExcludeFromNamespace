@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="ExcludeFromNamespace.870d6a25-cf09-4c6e-aae0-cb5e345ee850" Version="1.0" Language="en-US" Publisher="ExcludeFromNamespace" />
+    <DisplayName>ExcludeFromNamespace</DisplayName>
+    <Description>Empty VSIX Project.</Description>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, )">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.5,)" d:Source="Manual" />
+  </Dependencies>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[17.14, )" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="%CurrentProject%" />
+  </Assets>
+</PackageManifest>

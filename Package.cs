@@ -70,7 +70,7 @@ namespace ExcludeFromNamespace
 
                     if (content.Contains(dir))
                     {
-                        File.WriteAllText(filePath, content.Replace(dir, string.Empty));
+                        File.WriteAllText(filePath, content.Replace($".{dir}", string.Empty));
                     }
                 }
             }

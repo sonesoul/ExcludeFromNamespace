@@ -6,7 +6,7 @@
     <Description>Exclude a certain directory from automatically generated namespace when adding C# files.</Description>
     <Preview>true</Preview>
   </Metadata>
-  <Installation>
+  <Installation AllUsers="true">
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, )">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>

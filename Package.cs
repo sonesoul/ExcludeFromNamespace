@@ -34,10 +34,6 @@ namespace ExcludeFromNamespace
 
         private GeneralOptions Options => (GeneralOptions)GetDialogPage(typeof(GeneralOptions));
 
-        private static readonly string LogFile = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-            "ExcludeFromNamespace.log");
-
         private DTE2 _dte;
         private ProjectItemsEvents _projectItemsEvents;
         
@@ -53,16 +49,8 @@ namespace ExcludeFromNamespace
             _projectItemsEvents = (_dte.Events as Events2).ProjectItemsEvents;
 
             _projectItemsEvents.ItemAdded += OnItemAdded;
-            _projectItemsEvents.ItemRemoved += i => Log("Removed");
-            _projectItemsEvents.ItemRenamed += (i, n) => Log("Renamed");
         }
 
-        private static void Log(string message)
-        {
-            File.AppendAllText(
-                LogFile,
-                $"[{DateTime.Now:HH:mm:ss}] {message}\n");
-        }
         private void OnItemAdded(ProjectItem item)
         {
             if (item == null || !Options.Enabled)

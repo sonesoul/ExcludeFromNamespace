@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ExcludeFromNamespace.870d6a25-cf09-4c6e-aae0-cb5e345ee850" Version="1.1.0" Language="en-US" Publisher="sonesoul" />
-    <DisplayName>ExcludeFromNamespace</DisplayName>
+    <Identity Id="Exclude-From-Namespace.51a8bdc1-18cc-41ea-9c5c-78a6aa4df507" Version="1.0.0" Language="en-US" Publisher="sonesoul" />
+    <DisplayName>Exclude From Namespace</DisplayName>
     <Description>Automatically removes excluded directory names from C# namespaces. </Description>
     <License>LICENSE</License>
     <Tags>c#, namespaces</Tags>

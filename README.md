@@ -19,8 +19,8 @@ namespace MyProject.src.Utils
 }
 ```
 However, folders like `src` or `Source` usually should not be part of the namespace.
-
 **Exclude From Namespace** automatically removes configured directory names from generated namespaces. \
+\
 Before:
 ```
 namespace MyProject.src.Utils

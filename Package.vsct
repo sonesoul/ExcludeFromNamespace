@@ -14,7 +14,7 @@
     </Groups>
 
     <Buttons>
-      <Button guid="guidPackageCmdSet" id="Command1Id" priority="0x0100" type="Button">
+      <Button guid="guidPackageCmdSet" id="cmdidToolWindow1Command" priority="0x0100" type="Button">
         <Parent guid="guidPackageCmdSet" id="MyMenuGroup" />
         <Strings>
           <ButtonText>Exclude From Namespace</ButtonText>
@@ -23,7 +23,7 @@
     </Buttons>
 
     <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\Command1.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages1" href="Resources\ToolWindow1Command.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
@@ -33,9 +33,19 @@
     <GuidSymbol name="guidPackageCmdSet" value="{1622adfe-f37f-40e5-b168-f808d3885f9f}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="Command1Id" value="0x0100" />
+      <IDSymbol value="4129" name="cmdidToolWindow1Command"/>
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{2ae7133b-3fdf-4025-b9e7-0a861cfb4b0d}" >
+    <GuidSymbol name="guidImages" value="{2ae7133b-3fdf-4025-b9e7-0a861cfb4b0d}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{ceef476e-b8a5-466d-8acf-2c417fb00efc}" name="guidImages1">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

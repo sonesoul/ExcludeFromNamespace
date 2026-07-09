@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ExcludeFromNamespace
 {
-    public class GeneralOptions : DialogPage
+    public class Settings : DialogPage
     {
         [Category("General")]
         [DisplayName("Excluded Directory Name")]

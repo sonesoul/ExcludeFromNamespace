@@ -21,18 +21,19 @@ namespace ExcludeFromNamespace
     [Guid(PackageGuidString)]
 
     [ProvideOptionPage(
-    typeof(GeneralOptions),
+    typeof(Settings),
     "Exclude From Namespace",
     "General",
     0,
     0,
     true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideToolWindow(typeof(SettingsWindow))]
     public sealed class Package : AsyncPackage
     {
         public const string PackageGuidString = "6efff7ff-fae2-4b54-b1d6-22a6221eeb3a";
-        
-        private GeneralOptions Options => (GeneralOptions)GetDialogPage(typeof(GeneralOptions));
+
+        public Settings Options => (Settings)GetDialogPage(typeof(Settings));
 
         private DTE2 _dte;
         private ProjectItemsEvents _projectItemsEvents;
@@ -49,7 +50,8 @@ namespace ExcludeFromNamespace
             _projectItemsEvents = (_dte.Events as Events2).ProjectItemsEvents;
 
             _projectItemsEvents.ItemAdded += OnItemAdded;
-            await Command1.InitializeAsync(this);
+
+            await SettingsWindowCommand.InitializeAsync(this);
         }
 
         private void OnItemAdded(ProjectItem item)

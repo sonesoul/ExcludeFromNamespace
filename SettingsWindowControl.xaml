@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ExcludeFromNamespace.SettingsWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}">
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Text="Excluded folder"
+            HorizontalAlignment="Center"/>
+
+        <TextBox
+            Grid.Row="1"
+            Width="120"
+            Text="src"
+            Margin="0,10,0,0" 
+            Name="FolderBox"/>
+
+        <CheckBox 
+            Grid.Row="2"
+            Content="Enabled"
+            Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            Name="EnabledBox"/>
+
+        <Button 
+            Grid.Row="3"
+            Content="Save"
+            Width="62"
+            Margin="0,30,0,0"
+            HorizontalAlignment="Center" Click="Button_Click"/>
+
+    </Grid>
+
+</UserControl>

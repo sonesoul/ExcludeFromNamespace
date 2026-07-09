@@ -1,12 +1,16 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualStudio.Shell;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace ExcludeFromNamespace
 {
@@ -57,27 +61,101 @@ namespace ExcludeFromNamespace
 
         private void OnItemAdded(ProjectItem item)
         {
-            if (item == null || !Settings.Enabled)
+            if (!Settings.Enabled || item == null)
                 return;
 
             ThreadHelper.ThrowIfNotOnUIThread();
 
+            if (!item.Name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+                return;
+
             var dir = Settings.ExcludedDirectory;
+            string path = item.FileNames[1];
 
-            if (item.Name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+            if (path.Contains($"{Path.DirectorySeparatorChar}{dir}{Path.DirectorySeparatorChar}"))
             {
-                string filePath = item.FileNames[1];
-
-                if (filePath.Contains($"{Path.DirectorySeparatorChar}{dir}{Path.DirectorySeparatorChar}"))
-                {
-                    string content = File.ReadAllText(filePath);
-
-                    if (content.Contains(dir))
-                    {
-                        File.WriteAllText(filePath, content.Replace($".{dir}", string.Empty));
-                    }
-                }
+                if (Settings.SafeEditing)
+                    RoslynRemove(dir, path);
+                else
+                    ByLineRemove(dir, path);
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            if (disposing && _projectItemsEvents != null)
+            {
+                _projectItemsEvents.ItemAdded -= OnItemAdded;
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private static void ByLineRemove(string dir, string filePath)
+        {
+            string[] lines = File.ReadAllLines(filePath);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i].Trim();
+
+                if (!line.StartsWith("namespace "))
+                    continue;
+
+                string oldNamespace = line.Substring("namespace ".Length);
+
+                oldNamespace = oldNamespace.TrimEnd(';');
+
+                string[] parts = oldNamespace.Split('.');
+
+                parts = parts
+                    .Where(x => !string.Equals(x, dir, StringComparison.OrdinalIgnoreCase))
+                    .ToArray();
+
+                string newNamespace = string.Join(".", parts);
+
+                string ending = lines[i].EndsWith(";") ? ";" : "";
+
+                lines[i] = lines[i].Replace(oldNamespace, newNamespace + ending);
+
+                break;
+            }
+
+            File.WriteAllLines(filePath, lines);
+        }
+        private static void RoslynRemove(string dir, string filePath)
+        {
+            string content = File.ReadAllText(filePath);
+
+            var root = CSharpSyntaxTree
+                    .ParseText(content)
+                    .GetRoot();
+
+            var namespaceNode = root
+                .DescendantNodes()
+                .OfType<BaseNamespaceDeclarationSyntax>()
+                .FirstOrDefault();
+
+            if (namespaceNode == null)
+                return;
+
+            var fixedName = namespaceNode
+                .Name
+                .ToString()
+                .Replace($".{dir}", "");
+
+            var newNamespace =
+                namespaceNode
+                .WithName(
+                    SyntaxFactory.ParseName(fixedName)
+                );
+
+            File.WriteAllText(filePath, root
+                .ReplaceNode(namespaceNode, newNamespace)
+                .ToFullString()
+            );
         }
     }
 }

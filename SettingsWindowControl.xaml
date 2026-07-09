@@ -11,6 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock 
@@ -32,11 +33,19 @@
             HorizontalAlignment="Center"
             Name="EnabledBox"/>
 
-        <Button 
+        <CheckBox 
             Grid.Row="3"
+            Content="Safe Editing (slower)"
+            Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+            Margin="0,30,0,0"
+            HorizontalAlignment="Center"
+            Name="SafeEditingBox"/>
+
+        <Button 
+            Grid.Row="4"
             Content="Save"
             Width="62"
-            Margin="0,30,0,0"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center" Click="Button_Click"/>
 
     </Grid>

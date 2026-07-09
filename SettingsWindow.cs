@@ -9,8 +9,8 @@ namespace ExcludeFromNamespace
     {
         public SettingsWindow() : base(null)
         {
-            Caption = "Options";
-            Content = new SettingsWindowControl(this.Package as ExcludeFromNamespace.Package);
+            Caption = "Settings";
+            Content = new SettingsWindowControl();
         }
     }
 }

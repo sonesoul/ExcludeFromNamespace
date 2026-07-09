@@ -8,10 +8,10 @@ namespace ExcludeFromNamespace
     {
         private Settings _options;
 
-        public SettingsWindowControl(ExcludeFromNamespace.Package package)
+        public SettingsWindowControl()
         {
             InitializeComponent();
-            _options = package.Options;
+            _options = Package.Settings;
             _options.LoadSettingsFromStorage();
 
             FolderBox.Text = _options.ExcludedDirectory;

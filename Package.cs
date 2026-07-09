@@ -33,7 +33,7 @@ namespace ExcludeFromNamespace
     {
         public const string PackageGuidString = "6efff7ff-fae2-4b54-b1d6-22a6221eeb3a";
 
-        public Settings Options => (Settings)GetDialogPage(typeof(Settings));
+        public static Settings Settings { get; private set; }
 
         private DTE2 _dte;
         private ProjectItemsEvents _projectItemsEvents;
@@ -47,8 +47,9 @@ namespace ExcludeFromNamespace
             if (_dte == null)
                 return;
 
+            Settings = (Settings)GetDialogPage(typeof(Settings));
+            
             _projectItemsEvents = (_dte.Events as Events2).ProjectItemsEvents;
-
             _projectItemsEvents.ItemAdded += OnItemAdded;
 
             await SettingsWindowCommand.InitializeAsync(this);
@@ -56,12 +57,12 @@ namespace ExcludeFromNamespace
 
         private void OnItemAdded(ProjectItem item)
         {
-            if (item == null || !Options.Enabled)
+            if (item == null || !Settings.Enabled)
                 return;
 
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            var dir = Options.ExcludedDirectory;
+            var dir = Settings.ExcludedDirectory;
 
             if (item.Name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
             {

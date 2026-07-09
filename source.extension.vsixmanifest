@@ -4,7 +4,9 @@
     <Identity Id="ExcludeFromNamespace.870d6a25-cf09-4c6e-aae0-cb5e345ee850" Version="1.1.0" Language="en-US" Publisher="sonesoul" />
     <DisplayName>ExcludeFromNamespace</DisplayName>
     <Description>Automatically removes excluded directory names from C# namespaces. </Description>
-    <Preview>true</Preview>
+    <License>MIT</License>
+    <Tags>c#, namespaces</Tags>
+    <MoreInfo>https://github.com/sonesoul/ExcludeFromNamespace</MoreInfo>
   </Metadata>
   <Installation AllUsers="true">
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, )">

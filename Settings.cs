@@ -13,7 +13,7 @@ namespace ExcludeFromNamespace
         [Category("General")]
         [DisplayName("Safe Editing")]
         [Description("Uses syntax analysis to safely modify namespaces instead of simple text replacement. This may be slower.")]
-        public bool SafeEditing { get; set; } = true;
+        public bool EnableSafeEditing { get; set; } = true;
 
         [Category("General")]
         [DisplayName("Enable")]

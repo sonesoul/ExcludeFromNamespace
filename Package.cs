@@ -74,7 +74,7 @@ namespace ExcludeFromNamespace
 
             if (path.Contains($"{Path.DirectorySeparatorChar}{dir}{Path.DirectorySeparatorChar}"))
             {
-                if (Settings.SafeEditing)
+                if (Settings.EnableSafeEditing)
                     RoslynRemove(dir, path);
                 else
                     ByLineRemove(dir, path);

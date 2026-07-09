@@ -35,11 +35,11 @@
 
         <CheckBox 
             Grid.Row="3"
-            Content="Safe Editing (slower)"
+            Content="Enable Safe Editing (slower)"
             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
             Margin="0,30,0,0"
             HorizontalAlignment="Center"
-            Name="SafeEditingBox"/>
+            Name="EnableSafeEditingBox"/>
 
         <Button 
             Grid.Row="4"

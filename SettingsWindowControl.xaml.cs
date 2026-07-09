@@ -15,14 +15,14 @@ namespace ExcludeFromNamespace
             _options.LoadSettingsFromStorage();
 
             FolderBox.Text = _options.ExcludedDirectory;
-            SafeEditingBox.IsChecked = _options.SafeEditing;
+            EnableSafeEditingBox.IsChecked = _options.EnableSafeEditing;
             EnabledBox.IsChecked = _options.Enabled;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _options.ExcludedDirectory = FolderBox.Text;
-            _options.SafeEditing = SafeEditingBox.IsChecked == true;
+            _options.EnableSafeEditing = EnableSafeEditingBox.IsChecked == true;
             _options.Enabled = EnabledBox.IsChecked == true;
 
             _options.SaveSettingsToStorage();

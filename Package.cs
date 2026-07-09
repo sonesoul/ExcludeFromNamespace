@@ -5,11 +5,11 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualStudio.Shell;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using ExcludeFromNamespace.Settings;
 using System.Threading.Tasks;
 
 namespace ExcludeFromNamespace
@@ -25,7 +25,7 @@ namespace ExcludeFromNamespace
     [Guid(PackageGuidString)]
 
     [ProvideOptionPage(
-    typeof(Settings),
+    typeof(PackageSettings),
     "Exclude From Namespace",
     "General",
     0,
@@ -37,7 +37,7 @@ namespace ExcludeFromNamespace
     {
         public const string PackageGuidString = "6efff7ff-fae2-4b54-b1d6-22a6221eeb3a";
 
-        public static Settings Settings { get; private set; }
+        public static PackageSettings Settings { get; private set; }
 
         private DTE2 _dte;
         private ProjectItemsEvents _projectItemsEvents;
@@ -51,7 +51,7 @@ namespace ExcludeFromNamespace
             if (_dte == null)
                 return;
 
-            Settings = (Settings)GetDialogPage(typeof(Settings));
+            Settings = (PackageSettings)GetDialogPage(typeof(PackageSettings));
             
             _projectItemsEvents = (_dte.Events as Events2).ProjectItemsEvents;
             _projectItemsEvents.ItemAdded += OnItemAdded;

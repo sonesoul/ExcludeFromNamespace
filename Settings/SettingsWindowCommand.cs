@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace ExcludeFromNamespace
+namespace ExcludeFromNamespace.Settings
 {
     internal sealed class SettingsWindowCommand
     {

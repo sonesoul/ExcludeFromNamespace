@@ -1,12 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using ExcludeFromNamespace.Settings;
 
 namespace ExcludeFromNamespace
 {
     public partial class SettingsWindowControl : UserControl
     {
-        private Settings _options;
+        private PackageSettings _options;
 
         public SettingsWindowControl()
         {

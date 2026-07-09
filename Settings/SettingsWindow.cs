@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace ExcludeFromNamespace
+namespace ExcludeFromNamespace.Settings
 {
     [Guid("ddd7025a-2926-4dde-87e2-70ca1d70bb46")]
     public class SettingsWindow : ToolWindowPane

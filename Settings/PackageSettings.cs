@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System.ComponentModel;
 
-namespace ExcludeFromNamespace
+namespace ExcludeFromNamespace.Settings
 {
-    public class Settings : DialogPage
+    public class PackageSettings : DialogPage
     {
         [Category("General")]
         [DisplayName("Excluded Directory Name")]
